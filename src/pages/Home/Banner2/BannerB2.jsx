@@ -1,4 +1,3 @@
-import React from 'react';
 import banner2 from '../../../assets/home/chef-service.jpg';
 
 const BannerB2 = () => {
