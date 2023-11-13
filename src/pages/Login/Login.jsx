@@ -1,11 +1,11 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { useContext, useEffect, useState } from 'react';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const Login = () => {
-    const captchaRef = useRef(null);
     const [disabled, setDisabled] = useState(true);
 
     const { signIn} = useContext(AuthContext);
@@ -24,11 +24,18 @@ const Login = () => {
         .then((result) => {
             const user = result.user;
             console.log(user);
+            Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: "User Login Successfull",
+              showConfirmButton: false,
+              timer: 1500
+            });
         })
     }
 
-    const handleValidedCapthcha = () =>{
-        const user_captcha_alue = captchaRef.current.value;
+    const handleValidedCapthcha = (e) =>{
+        const user_captcha_alue = e.target.value;
         if(validateCaptcha(user_captcha_alue)){
             setDisabled(false);
         }
@@ -88,14 +95,13 @@ const Login = () => {
               <LoadCanvasTemplate />
               </label>
               <input
-                ref={captchaRef}
+               onBlur={handleValidedCapthcha}
                 type="type"
                 name="captcha"
                 placeholder="type the captcha above"
                 className="input input-bordered"
                 required
               />
-              <button onClick={handleValidedCapthcha} className="btn btn-outline btn-xs mt-2">Validate</button>
             </div>
             <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
             <p className='text-center font-medium'><small>New Here? <Link className='text-blue-600' to='/signup'>Create an account!!!</Link></small></p>
