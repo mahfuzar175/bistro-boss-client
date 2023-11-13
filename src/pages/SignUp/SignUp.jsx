@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import pic from '../../assets/others/authentication2.png'
 
 const SignUp = () => {
   const {
@@ -45,15 +46,11 @@ const SignUp = () => {
     <Helmet>
         <title>Bistro Boss | Sign Up</title>
       </Helmet>
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center md:w-1/2 lg:text-left">
-          <h1 className="text-5xl font-bold">Register now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+    <div className="hero min-h-screen">
+      <div className="hero-content flex-col lg:flex-row">
+      <div className="flex flex-col justify-center items-center text-center md:w-1/2 lg:text-left">
+          <h1 className="text-5xl font-bold mb-4">Register now!</h1>
+          <img src={pic} alt="" />
         </div>
         <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">

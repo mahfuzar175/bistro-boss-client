@@ -1,31 +1,55 @@
 import { useContext } from "react";
-import {NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  const handleLogOut = () =>{
+  const handleLogOut = () => {
     logOut()
-    .then(() =>{})
-    .catch(error => console.log(error));
-
-  }
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   const navOptions = (
     <>
-      <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/menu'>Our Menu</NavLink></li>
-      <li><NavLink to='/order/salad'>Order Food</NavLink></li>
-      <li><NavLink to='/secret'>Secret</NavLink></li>
-      {
-        user? <>
-        <li><span>{user?.displayName}</span></li>
-        <li><button onClick={handleLogOut} className="btn btn-ghost text-sm">LogOut</button></li>
-        </> : <>
-        <li><NavLink to='/login'>Login</NavLink></li>
+      <li>
+        <NavLink to="/">HOME</NavLink>
+      </li>
+      <li>
+        <NavLink to="/menu">OUR MENU</NavLink>
+      </li>
+      <li>
+        <NavLink to="/order/salad">ORDER FOOD</NavLink>
+      </li>
+      <li>
+        <NavLink to="/secret">SECRET</NavLink>
+      </li>
+      <li>
+        <Link to="/">
+          <button className="flex">
+            <p className="mr-2">OUR SHOP</p>
+            <FaShoppingCart></FaShoppingCart>
+            <p className="badge badge-secondary">+99</p>
+          </button>
+        </Link>
+      </li>
+      {user ? (
+        <>
+          {/*<li><span>{user?.displayName}</span></li>*/}
+          <li>
+            <button onClick={handleLogOut} className="btn btn-ghost text-sm">
+              LOGOUT
+            </button>
+          </li>
         </>
-      }
-      
+      ) : (
+        <>
+          <li>
+            <NavLink to="/login">LOGIN</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -62,9 +86,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {navOptions}
-            </ul>
+          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
         <div className="navbar-end">
           <a className="btn">Button</a>
