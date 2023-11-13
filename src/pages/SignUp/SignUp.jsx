@@ -1,5 +1,8 @@
+import { useContext } from "react";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
   const {
@@ -8,11 +11,22 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
+  const {createUser} = useContext(AuthContext);
+
   const onSubmit = (data) => {
     console.log(data);
+    createUser(data.email, data.password)
+    .then(result =>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    })
   };
 
   return (
+    <>
+    <Helmet>
+        <title>Bistro Boss | Sign Up</title>
+      </Helmet>
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center md:w-1/2 lg:text-left">
@@ -61,7 +75,8 @@ const SignUp = () => {
               </label>
               <input
                 type="password"
-                {...register("password", { required: true, minLength: 6, maxLength: 20})}
+                {...register("password", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                })}
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
@@ -79,6 +94,11 @@ const SignUp = () => {
               {errors.password?.type === "maxLength" && (
                 <p className="text-red-500" >
                   Password must be 20 characters
+                </p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-500" >
+                  Password must have one uppercase, one lowercase, one number and one special character
                 </p>
               )}
               <label className="label">
@@ -100,6 +120,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
