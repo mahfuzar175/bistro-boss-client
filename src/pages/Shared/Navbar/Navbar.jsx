@@ -16,8 +16,10 @@ const Navbar = () => {
       <li><NavLink to='/'>Home</NavLink></li>
       <li><NavLink to='/menu'>Our Menu</NavLink></li>
       <li><NavLink to='/order/salad'>Order Food</NavLink></li>
+      <li><NavLink to='/secret'>Secret</NavLink></li>
       {
         user? <>
+        <li><span>{user?.displayName}</span></li>
         <li><button onClick={handleLogOut} className="btn btn-ghost text-sm">LogOut</button></li>
         </> : <>
         <li><NavLink to='/login'>Login</NavLink></li>
