@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import {
   FaAd,
+  FaBook,
   FaCalendar,
   FaHome,
   FaList,
@@ -8,11 +9,18 @@ import {
   FaSearch,
   FaShopify,
   FaShoppingCart,
-  FaVoicemail,
+  FaUsers,
+  FaUtensils,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+  // const [cart] = useCart();
+
+  // TODO: get admin value from the database
+  const isAdmin = true;
+  
   return (
     <div className="flex">
       <Helmet>
@@ -25,7 +33,37 @@ const Dashboard = () => {
           <a className="text-[10px] block">R E S T U R E N T</a>
         </a>
         <ul className="menu p-4">
+          {
+            isAdmin ? <>
+            <li>
+            <NavLink to="/dashboard/adminHome">
+              <FaHome></FaHome>ADMIN HOME
+            </NavLink>
+          </li>
           <li>
+            <NavLink to="/dashboard/addItems">
+              <FaUtensils></FaUtensils>ADD ITEMS
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/manageItems">
+              <FaList></FaList>MANAGE ITEMS
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/manageBookings">
+              <FaBook></FaBook>MANGE BOOKINGS
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/allUsers">
+              <FaUsers></FaUsers>ALL USERS
+            </NavLink>
+          </li>
+            </>
+            :
+            <>
+            <li>
             <NavLink to="/dashboard/userHome">
               <FaHome></FaHome>USER HOME
             </NavLink>
@@ -50,6 +88,8 @@ const Dashboard = () => {
               <FaList></FaList> MY BOOKINGS
             </NavLink>
           </li>
+            </>
+          }
           {/* shared nav links */}
           <div className="divider"></div>
           <li>
