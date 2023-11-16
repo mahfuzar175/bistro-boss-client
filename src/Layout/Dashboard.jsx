@@ -50,6 +50,7 @@ const Dashboard = () => {
               <FaList></FaList> MY BOOKINGS
             </NavLink>
           </li>
+          {/* shared nav links */}
           <div className="divider"></div>
           <li>
             <NavLink to="/">

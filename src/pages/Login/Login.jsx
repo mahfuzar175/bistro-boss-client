@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import pic from '../../assets/others/authentication2.png'
+import SocialLogin from '../../components/SocalLogin/SocialLogin';
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
@@ -106,8 +107,9 @@ const Login = () => {
               />
             </div>
             <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
-            <p className='text-center font-medium'><small>New Here? <Link className='text-blue-600' to='/signup'>Create an account!!!</Link></small></p>
           </form>
+          <p className='text-center font-medium'><small>New Here? <Link className='text-blue-600' to='/signup'>Create an account!!!</Link></small></p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
