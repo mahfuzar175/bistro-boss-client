@@ -9,7 +9,7 @@ import SocialLogin from '../../components/SocalLogin/SocialLogin';
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
-    const { signIn} = useContext(AuthContext);
+    const {signIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
