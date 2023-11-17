@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import SectionTile from "../../components/SectionTitle/SectionTile";
-import useAxiosSercure from "../../hooks/useAxiosSercure";
 import { FaTrash, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosSercure from "../../../hooks/useAxiosSercure";
+import { useQuery } from "@tanstack/react-query";
+import SectionTile from "../../../components/SectionTitle/SectionTile";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSercure();

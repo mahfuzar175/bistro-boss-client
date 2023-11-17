@@ -20,7 +20,7 @@ const Recomends = () => {
               Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
             </p>
           </div>
-          <div className="p-6 pt-0 flex justify-center items-center">
+          <div className="mt-4 p-6 pt-0 flex justify-center items-center">
             <button
               className="block btn btn-outline border-0 border-orange-400 bg-slate-200 border-b-4 w-1/2 select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-yellow-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             >
@@ -38,7 +38,7 @@ const Recomends = () => {
               Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
             </p>
           </div>
-          <div className="p-6 pt-0 flex justify-center items-center">
+          <div className="mt-4 p-6 pt-0 flex justify-center items-center">
             <button
               className="block btn btn-outline border-0 border-orange-400 bg-slate-200 border-b-4 w-1/2 select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-yellow-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             >
@@ -56,7 +56,7 @@ const Recomends = () => {
               Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
             </p>
           </div>
-          <div className="p-6 pt-0 flex justify-center items-center">
+          <div className="mt-4 p-6 pt-0 flex justify-center items-center">
             <button
               className="block btn btn-outline border-0 bg-slate-200 border-orange-400 border-b-4 w-1/2 select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-yellow-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             >
