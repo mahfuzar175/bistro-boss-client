@@ -5,8 +5,7 @@ import useAuth from "../../hooks/useAuth";
 const AdminRoutes = ({children}) => {
     const {user, loading }=  useAuth();
     const [isAdmin, isAdminLoading] = useAdmin();
-    const location = useLocation();
-    
+    const location = useLocation();  
     if(loading || isAdminLoading){
         return <progress className="progress w-56"></progress>
     }

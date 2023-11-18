@@ -1,16 +1,38 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
 import SectionTile from "../../../components/SectionTitle/SectionTile";
 import useMenu from "../../../hooks/useMenu";
+import Swal from "sweetalert2";
+import useAxiosSercure from "../../../hooks/useAxiosSercure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
-    const [menu] = useMenu();
+    const [menu, refetch] = useMenu();
+    const axiosSecure = useAxiosSercure();
 
-    const handleDeletedItem = (item) =>{
-
-    }
-
-    const handleUpdateItem = (item) =>{
-
+    const handleDeleteItem = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.delete(`/menu/${item._id}`);
+                // console.log(res.data);
+                if (res.data.deletedCount > 0) {
+                    // refetch to update the ui
+                    refetch();
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: `${item.name} has been deleted.`,
+                        icon: "success",
+                    });
+                }
+            }
+        });
     }
 
   return (
@@ -53,16 +75,17 @@ const ManageItems = () => {
                   <h2>${item.price}</h2>
                 </th>
                 <th>
+                  <Link to={`/dashboard/updateItem/${item._id}`}>
                   <button
-                     onClick={() => handleUpdateItem(item)}
                     className="btn btn-lg text-white bg-green-700 hover:text-black"
                   >
                     <FaEdit></FaEdit>{" "}
                   </button>
+                  </Link>
                 </th>
                 <th>
                 <button
-                    onClick={() => handleDeletedItem(item)}
+                    onClick={() => handleDeleteItem(item)}
                     className="btn btn-lg text-white bg-red-700 hover:text-black"
                   >
                     <FaTrash></FaTrash>{" "}
