@@ -12,6 +12,7 @@ const UpdateIntem = () => {
     const {name, category, price, recipe, _id} = useLoaderData();
 
     const { register, handleSubmit, reset } = useForm();
+    
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSercure();
   const onSubmit = async (data) => {
@@ -52,6 +53,7 @@ const UpdateIntem = () => {
   };
 
     return (
+      
         <div>
       <SectionTile
         subHeading="---Update info?---"

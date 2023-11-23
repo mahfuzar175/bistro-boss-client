@@ -1,6 +1,4 @@
-import {
-    createBrowserRouter,
-  } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
 import Menu from "../pages/Menu/Menu";
@@ -16,6 +14,10 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AdminRoutes from "./PrivateRoute/AdminRoutes";
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 import UpdateIntem from "../pages/Dashboard/UpdateItem/UpdateIntem";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 
 
   export const router = createBrowserRouter([
@@ -56,11 +58,27 @@ import UpdateIntem from "../pages/Dashboard/UpdateItem/UpdateIntem";
       children: [
         // normal user routes
         {
+          path: 'userHome',
+          element: <UserHome></UserHome>
+        },
+        {
           path: 'cart',
           element: <Cart></Cart>,
         },
+        {
+          path: 'payment',
+          element: <Payment></Payment>
+        },
+        {
+          path: 'paymentHistory',
+          element: <PaymentHistory></PaymentHistory>
+        },
 
         // admin only routes
+        {
+          path: 'adminHome',
+          element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+        },
         {
           path: 'allUsers',
           element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
@@ -72,7 +90,7 @@ import UpdateIntem from "../pages/Dashboard/UpdateItem/UpdateIntem";
         {
           path: 'updateItem/:id',
           element: <AdminRoutes><UpdateIntem></UpdateIntem></AdminRoutes>,
-          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+          loader: ({params}) => fetch(`https://bistro-boss-server-steel-one.vercel.app/menu/${params.id}`)
 
         },
         {

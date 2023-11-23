@@ -13,7 +13,7 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
-import useCart from "../hooks/useCart";
+// import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
@@ -70,7 +70,7 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/reservation">
+            <NavLink to="/dashboard/hisitory">
               <FaCalendar></FaCalendar>RESERVATION
             </NavLink>
           </li>
@@ -85,8 +85,8 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/bookings">
-              <FaList></FaList> MY BOOKINGS
+            <NavLink to="/dashboard/paymentHistory">
+              <FaList></FaList> Payment Real History
             </NavLink>
           </li>
             </>
