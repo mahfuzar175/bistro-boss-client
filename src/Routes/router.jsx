@@ -90,7 +90,7 @@ import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
         {
           path: 'updateItem/:id',
           element: <AdminRoutes><UpdateIntem></UpdateIntem></AdminRoutes>,
-          loader: ({params}) => fetch(`https://bistro-boss-server-steel-one.vercel.app/menu/${params.id}`)
+          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
 
         },
         {
